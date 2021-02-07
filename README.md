@@ -1,5 +1,9 @@
 # Golden Raspberry Awards
-API desenvolvida em JAVA com Spring Boot
+API desenvolvida em JAVA com Spring Boot. Utilizando JDK 11.
+
+```diff
+- Necessário JAVA 11 para execução do projeto. https://www.oracle.com/br/java/technologies/javase-jdk11-downloads.html
+```
 
 ## Instruções para execução
 - Para execução dos testes, executar a partir da pasta raiz do projeto, via linha de comando:  
