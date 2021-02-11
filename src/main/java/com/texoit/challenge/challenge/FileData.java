@@ -1,6 +1,10 @@
 package com.texoit.challenge.challenge;
 
 import java.io.FileReader;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import com.opencsv.CSVParser;
 import com.opencsv.CSVParserBuilder;
@@ -28,7 +32,13 @@ public class FileData {
             String[] values = null;
           
             while((values = reader.readNext()) != null){
-                this.repository.save(new Movie(Integer.parseInt(values[0]), values[1], values[2], values[3], (values[4].toUpperCase().equals("YES")) ? true : false));
+                List<String> producers = new ArrayList<String>(Arrays.asList(values[3].split(",")));
+                String lastProducer = producers.remove(producers.size()-1);
+                producers.addAll( Arrays.asList(lastProducer.split(" and ")));
+
+                for (String producer : producers) {
+                    this.repository.save(new Movie(Integer.parseInt(values[0]), values[1], values[2], producer.trim(), (values[4].toUpperCase().equals("YES")) ? true : false));
+                }
             }
         } catch (Exception e) {
             e.printStackTrace();
